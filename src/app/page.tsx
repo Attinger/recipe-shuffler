@@ -11,7 +11,6 @@ export default async function HomePage() {
   return (
     <main className="">
       <div>
-        <h1>Hello Recipe World in Progress</h1>
         {posts.map((post) => (
         <div key={post.id}>
           {post.name}
