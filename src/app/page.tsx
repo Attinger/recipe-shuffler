@@ -1,4 +1,5 @@
-import { db } from "~/server/db";
+import { db } from "~/server/db/index.js";
+
 
 export const dynamic = "force-dynamic";
 
