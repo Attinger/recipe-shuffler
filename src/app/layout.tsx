@@ -20,7 +20,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`font-sans ${inter.variable}`}>{children}</body>
+      <body className={`font-sans ${inter.variable}`}>
+        <div className="flex justify-between bg-blue">
+          <h1>Recipe Shuffler</h1>
+          <button>
+            Sign in
+          </button>
+        </div>
+        {children}
+      </body>
     </html>
   );
 }
