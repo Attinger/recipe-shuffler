@@ -1,27 +1,13 @@
 import { SignedIn, SignedOut } from "@clerk/nextjs";
+import { desc } from "drizzle-orm";
 import { db } from "~/server/db/index";
-
 
 export const dynamic = "force-dynamic";
 
-async function GenerateData() {
-  const posts = await db.query.posts.findMany();
-
-  return (
-    <div>
-      {posts.map((post) => (
-        <div key={post.id}>
-          {post.name}
-        </div>
-      ))}
-    </div>
-  )
-}
-
 export default async function HomePage() {
-
-  const posts = await db.query.posts.findMany();
-  console.log(posts);
+  const recipes = await db.query.recipes.findMany({
+    orderBy: model => desc(model.id),
+  });
 
   return (
     <main className="">
@@ -32,7 +18,11 @@ export default async function HomePage() {
           </div>
         </SignedOut>
         <SignedIn>
-          <GenerateData />
+        {recipes.map((recipe) => (
+          <div key={recipe.id}>
+            {recipe.name}
+          </div>
+        ))}
         </SignedIn>
       </div>
     </main>

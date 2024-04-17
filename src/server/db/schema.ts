@@ -18,11 +18,12 @@ import {
  */
 export const createTable = pgTableCreator((name) => `recipe-shuffler_${name}`);
 
-export const posts = createTable(
+export const recipes = createTable(
   "post",
   {
     id: serial("id").primaryKey(),
-    name: varchar("name", { length: 256 }),
+    name: varchar("name", { length: 256 }).notNull(),
+    title: varchar("title", { length: 256 }).notNull(),
     createdAt: timestamp("created_at")
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull(),
