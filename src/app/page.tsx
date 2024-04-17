@@ -1,13 +1,11 @@
 import { SignedIn, SignedOut } from "@clerk/nextjs";
-import { desc } from "drizzle-orm";
-import { db } from "~/server/db/index";
+import { getAllRecipes } from "~/server/queries";
 
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
-  const recipes = await db.query.recipes.findMany({
-    orderBy: model => desc(model.id),
-  });
+
+  const recipes = await getAllRecipes();
 
   return (
     <main className="">
