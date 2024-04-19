@@ -1,14 +1,12 @@
 import { SignedIn, SignedOut } from "@clerk/nextjs";
-import { getAllRecipes } from "~/server/queries";
+import { CreateRecipe } from "./_components/createRecipe/createRecipe";
 
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
 
-  const recipes = await getAllRecipes();
-
   return (
-    <main className="">
+    <main>
       <div>
         <SignedOut>
           <div className="flex justify-center">
@@ -16,11 +14,7 @@ export default async function HomePage() {
           </div>
         </SignedOut>
         <SignedIn>
-        {recipes.map((recipe) => (
-          <div key={recipe.id}>
-            {recipe.name}
-          </div>
-        ))}
+          <CreateRecipe />
         </SignedIn>
       </div>
     </main>

@@ -7,6 +7,7 @@ import {
   pgTableCreator,
   serial,
   timestamp,
+  uuid,
   varchar,
 } from "drizzle-orm/pg-core";
 
@@ -21,9 +22,9 @@ export const createTable = pgTableCreator((name) => `recipe-shuffler_${name}`);
 export const recipes = createTable(
   "post",
   {
-    id: serial("id").primaryKey(),
-    name: varchar("name", { length: 256 }).notNull(),
+    id: uuid("id").primaryKey().default(sql`gen_random_uuid()`),
     title: varchar("title", { length: 256 }).notNull(),
+    description: varchar("description", { length: 1024 }),
     userId: varchar("userId", { length: 256 }).notNull(),
     createdAt: timestamp("created_at")
       .default(sql`CURRENT_TIMESTAMP`)
@@ -31,6 +32,6 @@ export const recipes = createTable(
     updatedAt: timestamp("updatedAt"),
   },
   (example) => ({
-    nameIndex: index("name_idx").on(example.name),
+    nameIndex: index("name_idx").on(example.title),
   })
 );

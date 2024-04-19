@@ -13,3 +13,14 @@ export async function getAllRecipes () {
 
     return recipes;
 }
+
+export async function getRecipe (id: number) {
+    const user = auth();
+
+    const recipe = await db.query.recipes.findFirst({
+        orderBy: (model, {desc}) => desc(model.id),
+    });
+
+
+    return recipe;
+}

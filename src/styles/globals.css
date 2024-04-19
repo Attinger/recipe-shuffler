@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+*, body {
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+    background-color:black;
+}
+
+h1, h2, h3, h4, h5, h6, p, label, input {
+    color:white;
+}
