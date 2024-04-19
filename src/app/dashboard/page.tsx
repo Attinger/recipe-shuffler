@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { getAllRecipes } from "~/server/queries";
 
+export const dynamic = "force-dynamic";
+
 export default async function Dasboard() {
     const recipes = await getAllRecipes();
 

@@ -4,6 +4,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 
 import { Inter } from "next/font/google";
 import { BottomNav } from "~/app/_components/bottomnav";
+import { Toaster } from "sonner";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -30,6 +31,7 @@ export default function RootLayout({
           <BottomNav />
           {children}
           {modal}
+          <Toaster />
           <div id="modal-root" />
         </body>
       </html>
