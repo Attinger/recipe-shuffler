@@ -1,31 +1,20 @@
-// Example model schema from the Drizzle docs
-// https://orm.drizzle.team/docs/sql-schema-declaration
-
 import { sql } from "drizzle-orm";
-import {
-  index,
-  pgTableCreator,
-  serial,
-  timestamp,
-  uuid,
-  varchar,
-} from "drizzle-orm/pg-core";
+import { pgTableCreator, varchar, jsonb, timestamp, boolean, index } from "drizzle-orm/pg-core";
 
-/**
- * This is an example of how to use the multi-project schema feature of Drizzle ORM. Use the same
- * database instance for multiple projects.
- *
- * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
- */
-export const createTable = pgTableCreator((name) => `recipe-shuffler_${name}`);
+// Function to prefix table names
+export const createTable = pgTableCreator((name) => `recipe-shuffl_${name}`);
 
 export const recipes = createTable(
   "post",
   {
-    id: uuid("id").primaryKey().default(sql`gen_random_uuid()`),
+    id: varchar("id", { length: 256 }).notNull(),
     title: varchar("title", { length: 256 }).notNull(),
     description: varchar("description", { length: 1024 }),
     userId: varchar("userId", { length: 256 }).notNull(),
+    ingredients: jsonb("ingredients").$type<Array<{ ingredient: string; unit: string }>>().notNull(),
+    steps: jsonb("steps").$type<Array<{ step: string;}>>(),
+    isPrivate: boolean("isPrivate").notNull(),
+    duration: varchar("duration", { length: 1024 }),
     createdAt: timestamp("created_at")
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull(),
@@ -35,3 +24,4 @@ export const recipes = createTable(
     nameIndex: index("name_idx").on(example.title),
   })
 );
+
