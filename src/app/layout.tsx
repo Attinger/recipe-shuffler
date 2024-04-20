@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={`font-sans ${inter.variable} dark`}>
+        <body className={`font-sans ${inter.variable}`}>
           <BottomNav />
           {children}
           {modal}

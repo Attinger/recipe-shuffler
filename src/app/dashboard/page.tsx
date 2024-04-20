@@ -5,7 +5,7 @@ export const dynamic = "force-dynamic";
 
 export default async function Dasboard() {
     const recipes = await getAllRecipes();
-    
+
     return (
         <div>
             {recipes.map((recipe) => (
@@ -13,7 +13,7 @@ export default async function Dasboard() {
               <Link href={`/recipes/${recipe.id}`}>
                 <div key={recipe.id}>
                   <img src="../../recipe-shuffler.webp" alt=""/>
-                  <p className="text-white">
+                  <p className="text-primary-100">
                     {recipe.title}
                   </p>
                   <p className="text-white">
