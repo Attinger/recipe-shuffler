@@ -1,4 +1,3 @@
-import { getRecipe } from "~/server/queries";
 import { Modal } from "../../modal";
 import FullPageImageView from "~/components/full-image-page";
 
