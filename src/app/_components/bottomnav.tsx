@@ -16,7 +16,7 @@ export function BottomNav() {
     };
 
     return (
-        <div className="fixed inset-x-0 bottom-0 bg-white text-gray-400 flex justify-between items-center py-2 px-4 shadow-lg">
+        <div className="fixed inset-x-0 bottom-0 bg-white text-gray-400 flex justify-between items-center py-2 px-4 shadow-lg max-w-screen-xl m-auto">
             <Link href="/" aria-label="Home">
                 <div className={isActive('/') ? 'text-green-500' : ''}>
                     <FaHome size="24" />
