@@ -1,3 +1,4 @@
+import { SearchRecipe } from "./_components/searchRecipe/SearchRecipe";
 import { UserInfo } from "./_components/user/UserInfo";
 
 export default function HomePage() {
@@ -6,6 +7,7 @@ export default function HomePage() {
     <main>
       <div>
         <UserInfo />
+        <SearchRecipe />
       </div>
     </main>
   );
